@@ -1,0 +1,15 @@
+{
+  "name": "rpssl",
+  "version": "1.0.0",
+  "description": "Rock Paper Scissors Spock Lizard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Madis Põld",
+  "license": "ISC",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ]
+}
