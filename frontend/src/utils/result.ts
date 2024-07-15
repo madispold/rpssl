@@ -20,11 +20,11 @@ export const getParsedResult = (res: PlayResponse, choices: Choice[]) => {
 
 export const getResultString = (results: Result) => {
   if (results === 'tie') {
-    return 'A tie!';
+    return 'Round is tied!';
   }
   if (results === 'win') {
-    return 'Player wins!';
+    return 'Player wins the round!';
   }
 
-  return 'Computer wins!';
+  return 'Computer wins the round!';
 };

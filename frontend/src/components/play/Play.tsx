@@ -6,6 +6,9 @@ import { Button } from '../button/Button';
 import { Result } from '../result/Result';
 import { Score } from '../score/Score';
 import { Score as ScoreType } from '../../types/score';
+import { AppSkeleton } from '../skeleton/AppSkeleton';
+import { PlaySkeleton } from '../skeleton/PlaySkeleton';
+import { History } from '../score/History';
 
 export const Play = () => {
   const {
@@ -24,6 +27,7 @@ export const Play = () => {
     url: 'play',
     onSuccess: (response) => {
       updateScore(response);
+      setHistory([response, ...history]);
     },
   });
 
@@ -31,21 +35,31 @@ export const Play = () => {
     player: 0,
     computer: 0,
   });
+  const [history, setHistory] = useState<PlayResponse[]>([]);
 
-  const updateScore = ({ results }: PlayResponse) => {
-    if (results === 'tie') return;
-    if (results === 'win') {
-      setScore((prev) => ({ ...prev, player: prev.player++ }));
+  const updateScore = (res: PlayResponse) => {
+    if (res.results === 'tie') return;
+    if (res.results === 'win') {
+      setScore((prev) => {
+        return {
+          ...prev,
+          player: prev.player++,
+        };
+      });
     } else {
-      setScore((prev) => ({ ...prev, computer: prev.computer++ }));
+      setScore((prev) => ({
+        ...prev,
+        computer: prev.computer++,
+      }));
     }
   };
 
   const resetScore = () => {
     setScore({ player: 0, computer: 0 });
+    setHistory([]);
   };
 
-  const onClick = (player: number) => {
+  const onSelection = (player: number) => {
     play({ player }).catch((err: unknown) => {
       console.error(err);
     });
@@ -53,47 +67,48 @@ export const Play = () => {
 
   const renderResult = () => {
     if (isPlayLoading) {
-      return <>Loading</>;
+      return <PlaySkeleton />;
     }
 
     if (playError) {
-      return <em className='leading-10 text-red-500'>{playError}</em>;
+      return <em className='text-red-500'>{playError}</em>;
     }
 
     if (!playResponse?.results) {
-      return <em className='leading-10'>Play a game!</em>;
+      return <em className='text-center'>Play a round to get going!</em>;
     }
 
     return <Result response={playResponse} choices={choices || []} />;
   };
 
   if (isChoicesLoading) {
-    return <>Loading</>;
+    return <AppSkeleton />;
   }
 
   if (choicesError) {
-    return <em className='leading-10 text-red-500'>{choicesError}</em>;
+    return <em className='text-red-500'>{choicesError}</em>;
   }
 
   return (
     <>
-      <Score score={score} resetScore={resetScore} />
-      <h2>Make your choice</h2>
+      <h3>Make your choice</h3>
       <div className='flex flex-wrap gap-4'>
         {choices?.map(({ id, name }) => (
           <Button
             disabled={isPlayLoading}
             key={id}
             onClick={() => {
-              onClick(id);
+              onSelection(id);
             }}
-            className='flex-1'
+            className='flex-1 capitalize'
           >
             {name}
           </Button>
         ))}
       </div>
+      <Score score={score} resetScore={resetScore} />
       {renderResult()}
+      <History history={history} choices={choices || []} />
     </>
   );
 };

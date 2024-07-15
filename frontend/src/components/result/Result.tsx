@@ -17,29 +17,35 @@ export const Result = ({ response, choices }: ResultProps) => {
   }
 
   return (
-    <div className='py-4 grid gap-4 sm:grid-cols-[1fr_150px_1fr] grid-cols-1 justify-center items-center'>
+    <div className='py-4 grid gap-4 sm:grid-cols-[1fr_225px_1fr] grid-cols-1 justify-center'>
       <div className='mx-auto'>
         <img
           className={clsx(
-            'max-h-[480px]',
+            'max-h-[320px]',
             isRotatingImage(player.id) && '[transform:rotateY(180deg)]'
           )}
           src={`/${player.name}.svg`}
           alt={player.name}
         />
       </div>
-      <div
-        className={clsx(
-          'text-center text-lg',
-          playerWon && 'text-amber-600',
-          computerWon && 'text-emerald-600'
-        )}
-      >
-        {resultString}
+      <div className='text-center text-lg mt-8'>
+        <div>
+          <span className='text-center italic capitalize'>{player.name}</span>
+          <span>&nbsp;VS&nbsp;</span>
+          <span className='text-center italic capitalize'>{computer.name}</span>
+        </div>
+        <div
+          className={clsx(
+            playerWon && 'text-amber-600',
+            computerWon && 'text-emerald-600'
+          )}
+        >
+          {resultString}
+        </div>
       </div>
       <div className='mx-auto'>
         <img
-          className='max-h-[480px]'
+          className='max-h-[320px]'
           src={`/${computer.name}.svg`}
           alt={computer.name}
         />
