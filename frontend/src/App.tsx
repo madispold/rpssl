@@ -1,3 +1,5 @@
+import { Play } from './components/play/Play';
+
 function App() {
   return (
     <section className='my-0 mx-auto p-4 flex flex-col flex-grow'>
@@ -12,6 +14,7 @@ function App() {
           more information from the creator here!
         </a>
       </div>
+      <Play />
     </section>
   );
 }
