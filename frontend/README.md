@@ -5,7 +5,7 @@
 - using [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) for HMR
 - `Eslint` for linting
 - `Prettier` for formatting
-- [Tailwind](https://tailwindcss.com/) for styling
+- [Tailwind](https://tailwindcss.com/) for styling, global styles in `index.css`
 - [Clsx](https://www.npmjs.com/package/clsx) for `className` strings
 - Images from https://www.svgrepo.com/
 
