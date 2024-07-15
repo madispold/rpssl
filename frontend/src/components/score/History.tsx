@@ -22,15 +22,18 @@ export const History = ({ history, choices }: HistoryProps) => {
     <>
       <h3>History</h3>
       <ul>
-        {parsedHistory.map((entry, index) => (
-          <li key={index}>
-            <span className='capitalize'>{entry.player?.name}</span>
-            <span> VS </span>
-            <span className='capitalize'>{entry.computer?.name}</span>
-            <span> - </span>
-            <span className='capitalize'>{entry.resultString}</span>
-          </li>
-        ))}
+        {parsedHistory.map((entry, index) => {
+          const key = `${entry.player?.id}-${index}-${entry.computer?.id}}`;
+          return (
+            <li key={key}>
+              <span className='capitalize'>{entry.player?.name}</span>
+              <span> VS </span>
+              <span className='capitalize'>{entry.computer?.name}</span>
+              <span> - </span>
+              <span className='capitalize'>{entry.resultString}</span>
+            </li>
+          );
+        })}
       </ul>
     </>
   );

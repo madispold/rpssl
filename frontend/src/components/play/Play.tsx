@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useFetch } from '../../hooks/useFetch';
 import { Choice } from '../../types/choice';
 import { PlayResponse } from '../../types/play';
 import { Button } from '../button/Button';
 import { Result } from '../result/Result';
-import { Score } from '../score/Score';
+import { MemoScore } from '../score/Score';
 import { Score as ScoreType } from '../../types/score';
 import { AppSkeleton } from '../skeleton/AppSkeleton';
 import { PlaySkeleton } from '../skeleton/PlaySkeleton';
@@ -22,6 +22,7 @@ export const Play = () => {
     error: playError,
     response: playResponse,
     request: play,
+    reset,
   } = useFetch<PlayResponse>({
     method: 'POST',
     url: 'play',
@@ -54,10 +55,12 @@ export const Play = () => {
     }
   };
 
-  const resetScore = () => {
+  const resetScore = useCallback(() => {
     setScore({ player: 0, computer: 0 });
     setHistory([]);
-  };
+    reset();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onSelection = (player: number) => {
     play({ player }).catch((err: unknown) => {
@@ -106,7 +109,11 @@ export const Play = () => {
           </Button>
         ))}
       </div>
-      <Score score={score} resetScore={resetScore} />
+      <MemoScore
+        isPlayLoading={isPlayLoading}
+        score={score}
+        resetScore={resetScore}
+      />
       {renderResult()}
       <History history={history} choices={choices || []} />
     </>

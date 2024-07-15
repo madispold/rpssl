@@ -2,13 +2,15 @@ import clsx from 'clsx';
 import { Score as ScoreType } from '../../types/score';
 import { getGameStatus } from '../../utils/score';
 import { Button } from '../button/Button';
+import { memo } from 'react';
 
 export type ScoreProps = {
   score: ScoreType;
   resetScore: () => void;
+  isPlayLoading: boolean;
 };
 
-export const Score = ({ score, resetScore }: ScoreProps) => {
+export const Score = ({ score, resetScore, isPlayLoading }: ScoreProps) => {
   const { message, color, isPlayerLeading, isComputerLeading } =
     getGameStatus(score);
 
@@ -16,7 +18,11 @@ export const Score = ({ score, resetScore }: ScoreProps) => {
     <>
       <div className='flex justify-between my-4'>
         <h3>Score</h3>
-        <Button variant='secondary' onClick={resetScore}>
+        <Button
+          variant='secondary'
+          onClick={resetScore}
+          disabled={isPlayLoading}
+        >
           Reset score
         </Button>
       </div>
@@ -44,3 +50,5 @@ export const Score = ({ score, resetScore }: ScoreProps) => {
     </>
   );
 };
+
+export const MemoScore = memo(Score);

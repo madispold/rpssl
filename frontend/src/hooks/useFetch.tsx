@@ -44,6 +44,10 @@ export function useFetch<T>({ method, url, initialize, onSuccess }: Params<T>) {
     }
   };
 
+  const reset = () => {
+    setResponse(null);
+  };
+
   useEffect(() => {
     if (initialize) {
       request().catch((error: unknown) => {
@@ -58,5 +62,6 @@ export function useFetch<T>({ method, url, initialize, onSuccess }: Params<T>) {
     error,
     response,
     request,
+    reset,
   };
 }

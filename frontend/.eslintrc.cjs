@@ -28,6 +28,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    '@typescript-eslint/restrict-template-expressions': 'off',
   },
   settings: {
     react: {
