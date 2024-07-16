@@ -50,5 +50,9 @@ VITE_API_URL=http://localhost:3000
 # VITE_API_URL=https://codechallenge.boohma.com
 ```
 
-- docker build . -t dockerized-rpssl
-- docker run -d -p 8080:8080 dockerized-rpssl
+- build the image and run the container
+
+```tsx
+docker build . -t dockerized-rpssl-fe
+docker run -d -n rpssl-frontend -p 8080:8080 dockerized-rpssl-fe
+```

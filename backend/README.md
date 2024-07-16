@@ -28,3 +28,13 @@
 - npm run build
 - npm run start
 - served at http://127.0.0.1:3000
+
+### Running a Containerized PRODUCTION build locally
+
+- cd backend
+- build the image and run the container
+
+```jsx
+docker build . -t dockerized-rpssl-be
+docker run -d -n rpssl-backend -p 3000:3000 dockerized-rpssl-be
+```

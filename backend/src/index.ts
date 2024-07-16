@@ -4,7 +4,7 @@ import cors from "@fastify/cors";
 import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox";
 const logger = { transport: { target: "pino-pretty" } };
 
-const PORT = 3000;
+const { ADDRESS = "localhost", PORT = "3000" } = process.env;
 const fastify = Fastify({ logger }).withTypeProvider<TypeBoxTypeProvider>();
 
 fastify.register(router);
@@ -17,7 +17,7 @@ fastify.register(cors, {
 
 const start = async () => {
   try {
-    await fastify.listen({ port: PORT });
+    await fastify.listen({ host: ADDRESS, port: parseInt(PORT, 10) });
     console.log(`Fastify running on port ${PORT} 🚀`);
   } catch (err) {
     console.error(err);
