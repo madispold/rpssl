@@ -36,5 +36,5 @@
 
 ```jsx
 docker build . -t dockerized-rpssl-be
-docker run -d -n rpssl-backend -p 3000:3000 dockerized-rpssl-be
+docker run -d --name rpssl-backend -p 3000:3000 dockerized-rpssl-be
 ```

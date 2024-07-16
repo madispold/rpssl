@@ -54,5 +54,5 @@ VITE_API_URL=http://localhost:3000
 
 ```tsx
 docker build . -t dockerized-rpssl-fe
-docker run -d -n rpssl-frontend -p 8080:8080 dockerized-rpssl-fe
+docker run -d --name rpssl-frontend -p 8080:8080 dockerized-rpssl-fe
 ```
