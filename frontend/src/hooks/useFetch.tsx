@@ -30,6 +30,7 @@ export function useFetch<T>({ method, url, initialize, onSuccess }: Params<T>) {
       if (!res.ok) {
         setError(`Failed to fetch, ${method}:${url}`);
         setResponse(null);
+        setIsLoading(false);
         return;
       }
 
@@ -38,7 +39,6 @@ export function useFetch<T>({ method, url, initialize, onSuccess }: Params<T>) {
       onSuccess?.(response);
       setIsLoading(false);
     } catch (error) {
-      console.log(error);
       setError(`Failed to fetch ${method}:${url}`);
       setIsLoading(false);
     }
