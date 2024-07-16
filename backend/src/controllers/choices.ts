@@ -1,7 +1,7 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import { predefinedChoices } from "../constants";
 import { getRandomChoice } from "../utils/getRandomChoice";
-import { Choice, Choices } from "../types/choice";
+import { Choice, Choices } from "../schema/choice";
 
 export default async function choices(fastify: FastifyInstance) {
   fastify.get(

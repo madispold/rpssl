@@ -4,9 +4,9 @@ import {
   PlayParamsType,
   PlayResponse,
   PlayResponseType,
-} from "../types/play";
+} from "../schema/play";
 import { getRandomChoice } from "../utils/getRandomChoice";
-import { Error, ErrorType } from "../types/error";
+import { Error, ErrorType } from "../schema/error";
 import { getPlayResult } from "../utils/getPlayResult";
 import { predefinedChoices } from "../constants";
 

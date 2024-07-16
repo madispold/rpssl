@@ -14,20 +14,24 @@
 
 ### Running locally
 
-- cd frontend
 - npm i
 
 #### DEV mode:
 
-- npm run dev
-- open http://localhost:8080/
+- NB! Make sure backend is running or replace localhost with hosted service in `.env.development.local`
+
+* npm run dev
+* open http://localhost:8080/
 
 #### PRODUCTION build preview:
 
 - create a .env file with the following content in `/frontend` directory:
 
 ```tsx
-VITE_API_URL=https://codechallenge.boohma.com
+VITE_API_URL=http://localhost:3000
+
+# Make sure backend service is running or replace with the following
+# VITE_API_URL=https://codechallenge.boohma.com
 ```
 
 - npm run build
@@ -40,7 +44,10 @@ VITE_API_URL=https://codechallenge.boohma.com
 - create a .env file with the following content in `/frontend` directory:
 
 ```tsx
-VITE_API_URL=https://codechallenge.boohma.com
+VITE_API_URL=http://localhost:3000
+
+# Make sure backend service is running or replace with the following
+# VITE_API_URL=https://codechallenge.boohma.com
 ```
 
 - docker build . -t dockerized-rpssl

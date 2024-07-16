@@ -1,6 +1,6 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import { getRandomNumber } from "../utils/getRandomNumber";
-import { RandomNumber } from "../types/random";
+import { RandomNumber } from "../schema/random";
 
 export default async function random(fastify: FastifyInstance) {
   fastify.get(
