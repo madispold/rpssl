@@ -20,6 +20,7 @@
 #### DEV mode:
 
 - npm run dev
+- open http://localhost:5173/
 
 #### PRODUCTION build preview:
 
@@ -31,3 +32,4 @@ VITE_API_URL=https://codechallenge.boohma.com
 
 - npm run build
 - npm run preview
+- open http://localhost:4173/
