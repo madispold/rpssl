@@ -23,7 +23,7 @@
 * npm run dev
 * open http://localhost:8080/
 
-#### PRODUCTION build preview:
+#### PRODUCTION mode:
 
 - create a .env file with the following content in `/frontend` directory:
 
