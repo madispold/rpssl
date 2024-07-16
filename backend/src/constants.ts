@@ -1,6 +1,6 @@
-import { Choice } from "./types/choice";
+import { ChoiceType } from "./types/choice";
 
-export const predefinedChoices: Choice[] = [
+export const predefinedChoices: ChoiceType[] = [
   {
     id: 1,
     name: "rock",
@@ -21,4 +21,20 @@ export const predefinedChoices: Choice[] = [
     id: 5,
     name: "spock",
   },
+];
+
+/**
+ * ChoiceId pairs: ${player}${computer}
+ */
+export const playerWinningCombinations = [
+  "32",
+  "21",
+  "14",
+  "45",
+  "53",
+  "34",
+  "42",
+  "25",
+  "51",
+  "13",
 ];

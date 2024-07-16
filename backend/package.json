@@ -13,6 +13,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@fastify/type-provider-typebox": "^4.0.0",
+    "@sinclair/typebox": "^0.32.34",
     "fastify": "^4.28.1",
     "pino-pretty": "^11.2.1"
   },

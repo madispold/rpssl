@@ -1,9 +1,17 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import { getRandomNumber } from "../utils/getRandomNumber";
+import { RandomNumber } from "../types/random";
 
 export default async function random(fastify: FastifyInstance) {
   fastify.get(
     "/random",
+    {
+      schema: {
+        response: {
+          200: RandomNumber,
+        },
+      },
+    },
     async function (_request: FastifyRequest, reply: FastifyReply) {
       const randomNum = getRandomNumber();
       if (isNaN(randomNum)) {
