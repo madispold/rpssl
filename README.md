@@ -5,4 +5,7 @@ Rock Paper Scissors Spock Lizard structured as a simple monorepo with 2 workspac
 - [Frontend with `React + TypeScript + Vite` template](./frontend/README.md)
 - [backend with `Fastify`](./backend/README.md)
 
-More info in their respective READMEs
+## Running concurrently in local env
+
+- npm i
+- npm run start
