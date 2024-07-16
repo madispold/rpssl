@@ -1,5 +1,7 @@
 FROM node:20-alpine
 
+ENV VITE_API_URL=http://0.0.0.0:3000
+
 WORKDIR /app
 
 COPY package.json .

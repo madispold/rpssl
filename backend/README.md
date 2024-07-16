@@ -34,7 +34,7 @@
 - cd backend
 - build the image and run the container
 
-```jsx
-docker build . -t dockerized-rpssl-be
-docker run -d --name rpssl-backend -p 3000:3000 dockerized-rpssl-be
+```tsx
+docker build . -t rpssl-be
+docker run -d --name backend -p 3000:3000 rpssl-be
 ```

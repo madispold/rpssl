@@ -1,0 +1,21 @@
+version: "3"
+services:
+  backend:
+    container_name: backend
+    image: rpssl-be
+    ports:
+      - "3000:3000"
+    networks:
+      - rpssl
+  frontend:
+    container_name: frontend
+    image: rpssl-fe
+    ports:
+      - "8080:8080"
+    networks:
+      - rpssl
+
+networks:
+  rpssl:
+    name: rpssl
+    driver: bridge
