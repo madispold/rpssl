@@ -1,5 +1,9 @@
 import { predefinedChoices } from "../constants";
-import { getRandomNumber } from "./getRandomNumber";
+
+/** Get random number between 0 - 4 */
+export const getRandomNumber = () => {
+  return Math.floor(Math.random() * 5);
+};
 
 export const getRandomChoice = () => {
   const randomNum = getRandomNumber();

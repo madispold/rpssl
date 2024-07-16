@@ -9,3 +9,5 @@ Rock Paper Scissors Spock Lizard structured as a simple monorepo with 2 workspac
 
 - npm i
 - npm run start
+- Frontend http://localhost:8080
+- Backend http://localhost:3000

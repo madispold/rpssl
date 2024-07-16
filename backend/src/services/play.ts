@@ -1,5 +1,5 @@
 import { playerWinningCombinations } from "../constants";
-import { ChoiceType } from "../schema/choice";
+import { ChoiceType } from "../schema/choices";
 import { PlayResponseType } from "../schema/play";
 
 export const getPlayResult = (

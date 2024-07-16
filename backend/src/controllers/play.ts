@@ -5,10 +5,10 @@ import {
   PlayResponse,
   PlayResponseType,
 } from "../schema/play";
-import { getRandomChoice } from "../utils/getRandomChoice";
 import { Error, ErrorType } from "../schema/error";
-import { getPlayResult } from "../utils/getPlayResult";
 import { predefinedChoices } from "../constants";
+import { getRandomChoice } from "../services/choices";
+import { getPlayResult } from "../services/play";
 
 export default async function play(fastify: FastifyInstance) {
   fastify.post<{ Body: PlayParamsType; Reply: PlayResponseType | ErrorType }>(

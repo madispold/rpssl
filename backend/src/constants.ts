@@ -1,4 +1,4 @@
-import { ChoiceType } from "./schema/choice";
+import { ChoiceType } from "./schema/choices";
 
 export const predefinedChoices: ChoiceType[] = [
   {
