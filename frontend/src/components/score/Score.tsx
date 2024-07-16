@@ -10,7 +10,7 @@ export type ScoreProps = {
   isPlayLoading: boolean;
 };
 
-export const Score = ({ score, resetScore, isPlayLoading }: ScoreProps) => {
+const ScoreComponent = ({ score, resetScore, isPlayLoading }: ScoreProps) => {
   const { message, color, isPlayerLeading, isComputerLeading } =
     getGameStatus(score);
 
@@ -23,11 +23,11 @@ export const Score = ({ score, resetScore, isPlayLoading }: ScoreProps) => {
           onClick={resetScore}
           disabled={isPlayLoading}
         >
-          Reset score
+          {score.isWon ? 'Start a new game' : 'Reset score'}
         </Button>
       </div>
-      <div className='flex items-center text-center md:flex-row flex-col gap-4'>
-        <div className='flex-1 text-lg text-amber-600'>
+      <div className='flex sm:items-baseline items-center text-center md:flex-row flex-col gap-4'>
+        <div className='flex-1 text-amber-600'>
           <div className='text-2xl'>Player</div>
           <div
             className={clsx(isPlayerLeading && 'scale-150', 'transition-all')}
@@ -35,10 +35,10 @@ export const Score = ({ score, resetScore, isPlayLoading }: ScoreProps) => {
             {score.player}
           </div>
         </div>
-        <div className='flex-1'>
-          <div className={clsx('text-center text-lg', color)}>{message}</div>
+        <div className='flex-1 text-2xl'>
+          <div className={clsx('text-center', color)}>{message}</div>
         </div>
-        <div className='flex-1 text-lg text-emerald-600'>
+        <div className='flex-1 text-emerald-600'>
           <div className='text-2xl'>Computer</div>
           <div
             className={clsx(isComputerLeading && 'scale-150', 'transition-all')}
@@ -51,4 +51,4 @@ export const Score = ({ score, resetScore, isPlayLoading }: ScoreProps) => {
   );
 };
 
-export const MemoScore = memo(Score);
+export const Score = memo(ScoreComponent);

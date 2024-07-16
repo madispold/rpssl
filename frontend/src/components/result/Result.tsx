@@ -28,11 +28,11 @@ export const Result = ({ response, choices }: ResultProps) => {
           alt={player.name}
         />
       </div>
-      <div className='text-center text-lg mt-8'>
+      <div className='text-center italic text-lg mt-8'>
         <div>
-          <span className='text-center italic capitalize'>{player.name}</span>
+          <span className='capitalize'>{player.name}</span>
           <span>&nbsp;VS&nbsp;</span>
-          <span className='text-center italic capitalize'>{computer.name}</span>
+          <span className='capitalize'>{computer.name}</span>
         </div>
         <div
           className={clsx(

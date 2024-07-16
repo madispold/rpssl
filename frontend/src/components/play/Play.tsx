@@ -4,18 +4,32 @@ import { Choice } from '../../types/choice';
 import { PlayResponse } from '../../types/play';
 import { Button } from '../button/Button';
 import { Result } from '../result/Result';
-import { MemoScore } from '../score/Score';
+import { Score } from '../score/Score';
 import { Score as ScoreType } from '../../types/score';
 import { AppSkeleton } from '../skeleton/AppSkeleton';
 import { PlaySkeleton } from '../skeleton/PlaySkeleton';
-import { History } from '../score/History';
+import { History } from '../history/History';
+
+export const ROUND_TARGET = 5;
 
 export const Play = () => {
+  const [score, setScore] = useState<ScoreType>({
+    player: 0,
+    computer: 0,
+    isWon: false,
+  });
+  const [history, setHistory] = useState<PlayResponse[]>([]);
+
   const {
     isLoading: isChoicesLoading,
     error: choicesError,
     response: choices,
   } = useFetch<Choice[]>({ method: 'GET', url: 'choices', initialize: true });
+
+  const onSuccessfulRound = (res: PlayResponse) => {
+    updateScore(res);
+    setHistory([res, ...history]);
+  };
 
   const {
     isLoading: isPlayLoading,
@@ -26,37 +40,28 @@ export const Play = () => {
   } = useFetch<PlayResponse>({
     method: 'POST',
     url: 'play',
-    onSuccess: (response) => {
-      updateScore(response);
-      setHistory([response, ...history]);
-    },
+    onSuccess: onSuccessfulRound,
   });
-
-  const [score, setScore] = useState<ScoreType>({
-    player: 0,
-    computer: 0,
-  });
-  const [history, setHistory] = useState<PlayResponse[]>([]);
 
   const updateScore = (res: PlayResponse) => {
     if (res.results === 'tie') return;
     if (res.results === 'win') {
-      setScore((prev) => {
-        return {
-          ...prev,
-          player: prev.player++,
-        };
+      setScore({
+        computer: score.computer,
+        player: score.player + 1,
+        isWon: Boolean(score.player + 1 >= ROUND_TARGET),
       });
     } else {
-      setScore((prev) => ({
-        ...prev,
-        computer: prev.computer++,
-      }));
+      setScore({
+        computer: score.computer + 1,
+        player: score.player,
+        isWon: Boolean(score.computer + 1 >= ROUND_TARGET),
+      });
     }
   };
 
   const resetScore = useCallback(() => {
-    setScore({ player: 0, computer: 0 });
+    setScore({ player: 0, computer: 0, isWon: false });
     setHistory([]);
     reset();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -95,10 +100,13 @@ export const Play = () => {
   return (
     <>
       <h3>Make your choice</h3>
+      <p>
+        Win <strong>{ROUND_TARGET}</strong> rounds to win it all!
+      </p>
       <div className='flex flex-wrap gap-4'>
         {choices?.map(({ id, name }) => (
           <Button
-            disabled={isPlayLoading}
+            disabled={isPlayLoading || score.isWon}
             key={id}
             onClick={() => {
               onSelection(id);
@@ -109,7 +117,7 @@ export const Play = () => {
           </Button>
         ))}
       </div>
-      <MemoScore
+      <Score
         isPlayLoading={isPlayLoading}
         score={score}
         resetScore={resetScore}

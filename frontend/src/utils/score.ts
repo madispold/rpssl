@@ -9,14 +9,14 @@ export const getGameStatus = (score: Score): GameStatus => {
   }
   if (score.player > score.computer) {
     return {
-      message: 'Player is leading!',
+      message: score.isWon ? 'Player won the game!' : 'Player is leading!',
       color: 'text-amber-600',
       isPlayerLeading: true,
     };
   }
 
   return {
-    message: 'Computer is leading!',
+    message: score.isWon ? 'Computer won the game!' : 'Computer is leading!',
     color: 'text-emerald-600',
     isComputerLeading: true,
   };

@@ -1,6 +1,7 @@
 export type Score = {
   player: number;
   computer: number;
+  isWon: boolean;
 };
 
 export type GameStatus = {
