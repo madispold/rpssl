@@ -27,7 +27,7 @@ const DropdownMenu = ({ children, title, visible }: DropdownMenuProps) => {
       </Button>
       <ul
         className={clsx(
-          'overflow-scroll max-h-40 m-1 rounded-sm border border-solid border-sky-900 shadow-xl transition-opacity',
+          'overflow-scroll max-h-40 rounded-sm border border-solid border-sky-900 shadow-xl transition-opacity',
           isOpen && 'opacity-100',
           !isOpen && 'opacity-0'
         )}

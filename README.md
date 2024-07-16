@@ -14,15 +14,11 @@ Rock Paper Scissors Spock Lizard structured as a simple monorepo with 2 workspac
 
 ## Running services with Docker Compose
 
+- build FE and BE images
+- run docker compose
+
 ```tsx
-// Build backend image
-cd backend
-docker build . -t rpssl-be
-
-// Build frontend image
-cd frontend
-docker build . -t rpssl-fe
-
-// from root directory
+docker build ./backend -t rpssl-be -f ./backend/Dockerfile
+docker build ./frontend -t rpssl-fe -f ./frontend/Dockerfile
 docker compose up -d
 ```
