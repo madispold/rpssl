@@ -7,10 +7,13 @@ Rock Paper Scissors Spock Lizard structured as a simple monorepo with 2 workspac
 
 ## Running services concurrently in DEV mode
 
-- npm i
-- npm run start
-- Frontend http://localhost:8080
-- Backend http://localhost:3000
+```tsx
+npm i
+npm run start
+```
+
+- backend http://localhost:3000
+- frontend http://localhost:8080
 
 ## Running services with Docker Compose
 
