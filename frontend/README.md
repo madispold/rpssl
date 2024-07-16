@@ -20,7 +20,7 @@
 #### DEV mode:
 
 - npm run dev
-- open http://localhost:5173/
+- open http://localhost:8080/
 
 #### PRODUCTION build preview:
 
@@ -32,4 +32,16 @@ VITE_API_URL=https://codechallenge.boohma.com
 
 - npm run build
 - npm run preview
-- open http://localhost:4173/
+- open http://localhost:8080/
+
+### Running a Containerized PRODUCTION build locally
+
+- cd frontend
+- create a .env file with the following content in `/frontend` directory:
+
+```tsx
+VITE_API_URL=https://codechallenge.boohma.com
+```
+
+- docker build . -t dockerized-rpssl
+- docker run -d -p 8080:8080 dockerized-rpssl
