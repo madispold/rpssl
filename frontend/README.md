@@ -8,6 +8,7 @@
 - [Tailwind](https://tailwindcss.com/) for styling, global styles in `index.css`
 - [Clsx](https://www.npmjs.com/package/clsx) for `className` strings
 - Images from https://www.svgrepo.com/
+- Icons from https://reactsvgicons.com/
 
 ## Setup
 

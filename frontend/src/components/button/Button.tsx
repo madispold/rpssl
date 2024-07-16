@@ -1,11 +1,15 @@
 import clsx from 'clsx';
 
-export type ButtonVariant = 'default' | 'secondary';
+export type ButtonVariant = 'default' | 'secondary' | 'ghost';
 
 const buttonVariants = (variant: ButtonVariant) => {
-  return variant === 'default'
-    ? 'border-sky-900 hover:border-sky-600 bg-sky-100 hover:bg-white'
-    : 'border-sky-600 hover:border-sky-900 hover:bg-sky-100';
+  if (variant === 'secondary') {
+    return 'border-sky-600 hover:border-sky-900 hover:bg-sky-100 focus:bg-sky-100';
+  }
+  if (variant === 'ghost') {
+    return 'border-none hover:text-sky-900 focus:text-sky-600';
+  }
+  return 'border-sky-900 hover:border-sky-600 bg-sky-100 hover:bg-white focus:bg-white';
 };
 
 export type ButtonProps = {
@@ -28,7 +32,7 @@ export const Button = ({
       disabled={disabled}
       onClick={onClick}
       className={clsx(
-        'h-10 px-2 py-1 border border-solid rounded-sm disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none',
+        'h-10 px-2 py-1 border border-solid rounded-sm disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200',
         className,
         buttonVariants(variant)
       )}
