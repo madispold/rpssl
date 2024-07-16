@@ -20,8 +20,8 @@ export const History = ({ history, choices }: HistoryProps) => {
   }
 
   return (
-    <DropdownMenu title='View round history' visible={true}>
-      {parsedHistory.map((entry, index) => {
+    <DropdownMenu title='Recent round history' visible={true}>
+      {parsedHistory.slice(0, 10).map((entry, index) => {
         const key = `${entry.player?.id}-${index}-${entry.computer?.id}}`;
         return (
           <li key={key} className='p-1'>

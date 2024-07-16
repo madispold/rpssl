@@ -10,7 +10,7 @@ import { AppSkeleton } from '../skeleton/AppSkeleton';
 import { PlaySkeleton } from '../skeleton/PlaySkeleton';
 import { History } from '../history/History';
 
-export const ROUND_TARGET = 5;
+const ROUND_TARGET = 5;
 
 export const Play = () => {
   const [score, setScore] = useState<ScoreType>({
