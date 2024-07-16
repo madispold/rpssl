@@ -16,10 +16,18 @@
 
 - cd frontend
 - npm i
+
+#### DEV mode:
+
+- npm run dev
+
+#### PRODUCTION build preview:
+
 - create a .env file with the following content in `/frontend` directory:
 
 ```tsx
 VITE_API_URL=https://codechallenge.boohma.com
 ```
 
-- npm run dev
+- npm run build
+- npm run preview
