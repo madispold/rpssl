@@ -1,14 +1,14 @@
 import { useCallback, useState } from 'react';
-import { useFetch } from '../../hooks/useFetch';
-import { Choice } from '../../types/choice';
-import { PlayResponse } from '../../types/play';
-import { Button } from '../button/Button';
-import { Result } from '../result/Result';
-import { Score } from '../score/Score';
-import { Score as ScoreType } from '../../types/score';
-import { AppSkeleton } from '../skeleton/AppSkeleton';
-import { PlaySkeleton } from '../skeleton/PlaySkeleton';
-import { History } from '../history/History';
+import { useFetch } from '../hooks/useFetch';
+import { PlayResponse } from '../types/play';
+import { AppSkeleton } from './AppSkeleton';
+import { Button } from './Button';
+import { Result } from './Result';
+import { Score } from './Score';
+import { Score as ScoreType } from '../types/score';
+import { ResultSkeleton } from './ResultSkeleton';
+import { History } from './History';
+import { useChoices } from '../hooks/useChoices';
 
 const ROUND_TARGET = 5;
 
@@ -24,12 +24,7 @@ export const Play = () => {
     isLoading: isChoicesLoading,
     error: choicesError,
     response: choices,
-  } = useFetch<Choice[]>({ method: 'GET', url: 'choices', initialize: true });
-
-  const onSuccessfulRound = (res: PlayResponse) => {
-    updateScore(res);
-    setHistory([res, ...history]);
-  };
+  } = useChoices();
 
   const {
     isLoading: isPlayLoading,
@@ -40,7 +35,10 @@ export const Play = () => {
   } = useFetch<PlayResponse>({
     method: 'POST',
     url: 'play',
-    onSuccess: onSuccessfulRound,
+    onSuccess: (res: PlayResponse) => {
+      updateScore(res);
+      setHistory([res, ...history]);
+    },
   });
 
   const updateScore = (res: PlayResponse) => {
@@ -75,7 +73,7 @@ export const Play = () => {
 
   const renderResult = () => {
     if (isPlayLoading) {
-      return <PlaySkeleton />;
+      return <ResultSkeleton />;
     }
 
     if (playError) {

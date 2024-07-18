@@ -1,8 +1,8 @@
 import { ReactNode, useState } from 'react';
 import clsx from 'clsx';
-import IconCaretUp from '../../icons/IconCaretUp';
-import IconCaretDown from '../../icons/IconCaretDown';
-import { Button } from '../button/Button';
+import IconCaretUp from '../icons/IconCaretUp';
+import IconCaretDown from '../icons/IconCaretDown';
+import { Button } from './Button';
 
 export type DropdownMenuProps = {
   title: string;

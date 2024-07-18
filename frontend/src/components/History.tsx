@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
-import { Choice } from '../../types/choice';
-import { PlayResponse } from '../../types/play';
-import { getParsedResult } from '../../utils/result';
-import DropdownMenu from '../dropdown-menu/DropdownMenu';
+import { Choice } from '../types/choice';
+import { PlayResponse } from '../types/play';
+import { getParsedResult } from '../utils/result';
+import DropdownMenu from './DropdownMenu';
 
 export type HistoryProps = {
   history: PlayResponse[];

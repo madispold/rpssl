@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Score as ScoreType } from '../../types/score';
-import { getGameStatus } from '../../utils/score';
-import { Button } from '../button/Button';
+import { Score as ScoreType } from '../types/score';
+import { getGameStatus } from '../utils/score';
+import { Button } from './Button';
 import { memo } from 'react';
 
 export type ScoreProps = {

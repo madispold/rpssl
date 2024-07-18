@@ -1,4 +1,4 @@
-import { Play } from './components/play/Play';
+import { Play } from './components/Play';
 
 function App() {
   return (

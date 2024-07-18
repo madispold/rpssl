@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import { Choice } from '../../types/choice';
-import { PlayResponse } from '../../types/play';
-import { getParsedResult, isRotatingImage } from '../../utils/result';
+import { Choice } from '../types/choice';
+import { PlayResponse } from '../types/play';
+import { getParsedResult, isRotatingImage } from '../utils/result';
 
 export type ResultProps = {
   response: PlayResponse;

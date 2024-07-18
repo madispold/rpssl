@@ -1,4 +1,4 @@
-export const PlaySkeleton = () => (
+export const ResultSkeleton = () => (
   <div className='w-full'>
     <div className='animate-pulse py-4 grid gap-4 sm:grid-cols-[1fr_100px_1fr] grid-cols-1 justify-center'>
       <div className='mx-auto'>
